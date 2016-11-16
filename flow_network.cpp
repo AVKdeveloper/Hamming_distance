@@ -192,3 +192,31 @@ int FlowNetwork::FindMaxFlowByDinitz() {
 	}
 	return result_flow;
 }
+
+void FlowNetwork::TransformStringsUsingFlow(std::string& string, std::string& pattern,
+	                                        std::unordered_map<int, int>& questions_in_string,
+	                                        std::unordered_map<int, int>& questions_in_pattern) {
+
+	// This function does bfs and after that changes '?' in string and pattern into '1' if we can reach appropriate 
+	// vertex from source and into '0' if we can reach appropriate vertex from target
+	AssignLevels(); // we don't take into account saturated edges
+	for (int i = 0; i < string.size(); ++i) {
+		if (string[i] == '?') {
+			if (levels_[2 + questions_in_string[i]] > 0) {
+				string[i] = '1';
+			} else {
+				string[i] = '0';
+			}
+		}
+	}
+	for (int i = 0; i < pattern.size(); ++i) {
+		if (pattern[i] == '?') {
+			if (levels_[2 + questions_in_string.size() + questions_in_string[i]] > 0) {
+				pattern[i] = '1';
+			}
+			else {
+				pattern[i] = '0';
+			}
+		}
+	}
+}

@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <unordered_map>
 #include <queue>
 #include <algorithm>
 #include <climits>
@@ -34,7 +35,9 @@ public:
 	int DfsInLayeredNetwork(const int& vertex_from, const int flow, std::vector<int>& possible_next_vertices);
 	int FindMaxFlowByDinitz();
 
-	void TransformStringsUsingFlow(std::string& string, ) const;
+	void TransformStringsUsingFlow(std::string& string, std::string& pattern, 
+		                           std::unordered_map<int, int>& questions_in_string,
+								   std::unordered_map<int, int>& questions_in_pattern);
 };
 
 

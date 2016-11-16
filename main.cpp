@@ -15,7 +15,7 @@ int main() {
 	std::string pattern;
 	file_in.open("input.txt", std::fstream::in);
 	file_in >> string >> pattern;
-	std::unordered_map<int, int> questions_in_string = FindSymbolInString('?', string);
+	std::unordered_map<int, int> questions_in_string = FindSymbolInString('?', string); 
 	std::unordered_map<int, int> questions_in_pattern = FindSymbolInString('?', pattern);
 	int vertices_quantity = 2 + questions_in_string.size() + questions_in_pattern.size();// quantity of vertices in graph
 																						 // 2 - for fictitious source and target and other vertices are symbols '?' from string and pattern
@@ -92,9 +92,13 @@ int main() {
 			}
 		}
 	}
+	file_in.close();
 	hamming_distance += net.FindMaxFlowByDinitz();
 	std::fstream file_out;
 	file_out.open("output.txt", std::fstream::out);
 	file_out << hamming_distance << std::endl;
+	net.TransformStringsUsingFlow(string, pattern, questions_in_string, questions_in_pattern);
+	file_out << string << std::endl << pattern;
+	file_out.close();
 	return 0;
 }
