@@ -1,4 +1,4 @@
-// This program finds max flow in undirected graph
+// This program finds Hamming distance for string and pattern
 // We use algorithm by Dinitz
 // O(V^2 * E)
 
