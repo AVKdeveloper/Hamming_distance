@@ -211,7 +211,7 @@ void FlowNetwork::TransformStringsUsingFlow(std::string& string, std::string& pa
 	}
 	for (int i = 0; i < pattern.size(); ++i) {
 		if (pattern[i] == '?') {
-			if (levels_[2 + questions_in_string.size() + questions_in_string[i]] > 0) {
+			if (levels_[2 + questions_in_string.size() + questions_in_pattern[i]] > 0) {
 				pattern[i] = '1';
 			}
 			else {

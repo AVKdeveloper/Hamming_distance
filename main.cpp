@@ -97,6 +97,7 @@ int main() {
 	std::fstream file_out;
 	file_out.open("output.txt", std::fstream::out);
 	file_out << hamming_distance << std::endl;
+	// Now we will restore the string and pattern
 	net.TransformStringsUsingFlow(string, pattern, questions_in_string, questions_in_pattern);
 	file_out << string << std::endl << pattern;
 	file_out.close();
